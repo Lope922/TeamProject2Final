@@ -226,37 +226,37 @@ Public Class Form1
             '' confirmation that i obtained the desired values needed to request a photo.
             '' now build a url request in this format.
             ' https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-            For Each number As Integer In 1 to 3
-                Dim url_PhotoRequest1 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm1_valueXML.InnerXml,
-                url_builder_for_photo_serverID1_value_from_XML.InnerXml, url_builder_for_photo_ID1_valueXML.InnerXml,
-                url_builder_for_photo_secret1_value_from_XML.InnerXml)
-                Dim url_PhotoRequest2 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm2_valueXML.InnerXml,
-                url_builder_for_photo_serverID2_value_from_XML.InnerXml, url_builder_for_photo_ID2_valueXML.InnerXml,
-                url_builder_for_photo_secret2_value_from_XML.InnerXml)
-                Dim url_PhotoRequest3 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm3_valueXML.InnerXml,
-                url_builder_for_photo_serverID3_value_from_XML.InnerXml, url_builder_for_photo_ID3_valueXML.InnerXml,
-                url_builder_for_photo_secret3_value_from_XML.InnerXml)
+            'For Each number As Integer In 1 to 3
+            Dim url_PhotoRequest1 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm1_valueXML.InnerXml,
+            url_builder_for_photo_serverID1_value_from_XML.InnerXml, url_builder_for_photo_ID1_valueXML.InnerXml,
+            url_builder_for_photo_secret1_value_from_XML.InnerXml)
+            Dim url_PhotoRequest2 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm2_valueXML.InnerXml,
+            url_builder_for_photo_serverID2_value_from_XML.InnerXml, url_builder_for_photo_ID2_valueXML.InnerXml,
+            url_builder_for_photo_secret2_value_from_XML.InnerXml)
+            Dim url_PhotoRequest3 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm3_valueXML.InnerXml,
+            url_builder_for_photo_serverID3_value_from_XML.InnerXml, url_builder_for_photo_ID3_valueXML.InnerXml,
+            url_builder_for_photo_secret3_value_from_XML.InnerXml)
 
-                ''render this image to an image box to be displayed on a bing maps api. Or look into using Flickrs maps
-                '"Copy and paste this link into a browser and see what photo is returned " + url_PhotoRequest)
-                '' tried to display to messagebox , but could not click on its contents.
-                Dim PhotoRequest1 As WebRequest = WebRequest.Create(url_PhotoRequest1)
-                Dim photoResponseStream As Stream = PhotoRequest1.GetResponse.GetResponseStream()
-                Dim flickrPhotoFromStream As Image = Image.FromStream(photoResponseStream)
-                PictureBox1.Image = flickrPhotoFromStream
-                Dim PhotoRequest2 As WebRequest = WebRequest.Create(url_PhotoRequest2)
-                Dim photoResponseStream2 As Stream = PhotoRequest2.GetResponse.GetResponseStream()
-                Dim flickrPhotoFromStream2 As Image = Image.FromStream(photoResponseStream2)
-                PictureBox2.Image = flickrPhotoFromStream2
-                Dim PhotoRequest3 As WebRequest = WebRequest.Create(url_PhotoRequest3)
-                Dim photoResponseStream3 As Stream = PhotoRequest3.GetResponse.GetResponseStream()
-                Dim flickrPhotoFromStream3 As Image = Image.FromStream(photoResponseStream3)
-                PictureBox3.Image = flickrPhotoFromStream3
-                'error 404 page not found
-                '' need a try catch block when i reach this point.
-                ''todo get the rest of the elements from the initial response.
-                ''NOTE: each web request sent generates a different response of results.
-                'catch any exceptions and let me know what is going wrong.
+            ''render this image to an image box to be displayed on a bing maps api. Or look into using Flickrs maps
+            '"Copy and paste this link into a browser and see what photo is returned " + url_PhotoRequest)
+            '' tried to display to messagebox , but could not click on its contents.
+            Dim PhotoRequest1 As WebRequest = WebRequest.Create(url_PhotoRequest1)
+            Dim photoResponseStream As Stream = PhotoRequest1.GetResponse.GetResponseStream()
+            Dim flickrPhotoFromStream As Image = Image.FromStream(photoResponseStream)
+            PictureBox1.Image = flickrPhotoFromStream
+            Dim PhotoRequest2 As WebRequest = WebRequest.Create(url_PhotoRequest2)
+            Dim photoResponseStream2 As Stream = PhotoRequest2.GetResponse.GetResponseStream()
+            Dim flickrPhotoFromStream2 As Image = Image.FromStream(photoResponseStream2)
+            PictureBox2.Image = flickrPhotoFromStream2
+            Dim PhotoRequest3 As WebRequest = WebRequest.Create(url_PhotoRequest3)
+            Dim photoResponseStream3 As Stream = PhotoRequest3.GetResponse.GetResponseStream()
+            Dim flickrPhotoFromStream3 As Image = Image.FromStream(photoResponseStream3)
+            PictureBox3.Image = flickrPhotoFromStream3
+            'error 404 page not found
+            '' need a try catch block when i reach this point.
+            ''todo get the rest of the elements from the initial response.
+            ''NOTE: each web request sent generates a different response of results.
+            'catch any exceptions and let me know what is going wrong.
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

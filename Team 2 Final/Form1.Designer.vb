@@ -61,9 +61,12 @@ Partial Class Form1
         '
         'stateComboBox
         '
+        Me.stateComboBox.AllowDrop = True
+        Me.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.stateComboBox.FormattingEnabled = True
         Me.stateComboBox.Items.AddRange(New Object() {"---", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"})
         Me.stateComboBox.Location = New System.Drawing.Point(172, 58)
+        Me.stateComboBox.MaxDropDownItems = 25
         Me.stateComboBox.Name = "stateComboBox"
         Me.stateComboBox.Size = New System.Drawing.Size(84, 21)
         Me.stateComboBox.TabIndex = 1

@@ -51,6 +51,10 @@
       <HintPath>..\packages\FlickrNet.3.15.0\lib\net20\FlickrNet.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleOAuth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleOAuth.Net.1.0.1\lib\net20\SimpleOAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />

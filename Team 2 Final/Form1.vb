@@ -3,6 +3,9 @@ Imports System.IO
 Imports System.Net
 Imports System.Text
 Imports System.Xml
+Imports FlickrNet
+Imports simpleOauth
+
 
 Public Class Form1
 
@@ -237,6 +240,11 @@ Public Class Form1
             url_builder_for_photo_serverID3_value_from_XML.InnerXml, url_builder_for_photo_ID3_valueXML.InnerXml,
             url_builder_for_photo_secret3_value_from_XML.InnerXml)
 
+
+            '' read from byte stream the images and display that am read into the picturebox 
+
+
+
             ''render this image to an image box to be displayed on a bing maps api. Or look into using Flickrs maps
             '"Copy and paste this link into a browser and see what photo is returned " + url_PhotoRequest)
             '' tried to display to messagebox , but could not click on its contents.
@@ -265,6 +273,19 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '' dim flickr as new flickr request 
+        Dim apiKey As String = "4f60a04f101ef604ead9be84856d9519"
+
+        Dim f As Flickr = New Flickr(apiKey)
+
+        '' import the simpleoauth for access token to build request for access token 
+
+        '' need to install-package SimpleOAuth.net from nuget console 
+
+        Dim accessToken As String
+
+
+
+
 
     End Sub
 End Class

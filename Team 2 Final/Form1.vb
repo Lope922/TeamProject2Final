@@ -230,6 +230,10 @@ Public Class Form1
             '' now build a url request in this format.
             ' https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
             'For Each number As Integer In 1 to 3
+
+            '' having trouble implementing this part within the class because it keeps throwing a null reference exception when trying to make the request when loading 
+            '' the xml document to read the web request. I have ran throught the debugger and checked the locals , but i cannot figure out what the problem is?
+
             Dim url_PhotoRequest1 As String = String.Format("https://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg", url_builder_for_farm1_valueXML.InnerXml,
             url_builder_for_photo_serverID1_value_from_XML.InnerXml, url_builder_for_photo_ID1_valueXML.InnerXml,
             url_builder_for_photo_secret1_value_from_XML.InnerXml)
@@ -272,20 +276,6 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '' dim flickr as new flickr request 
-        Dim apiKey As String = "4f60a04f101ef604ead9be84856d9519"
-
-        Dim f As Flickr = New Flickr(apiKey)
-
-        '' import the simpleoauth for access token to build request for access token 
-
-        '' need to install-package SimpleOAuth.net from nuget console 
-
-        Dim accessToken As String
-
-
-
-
 
     End Sub
 End Class

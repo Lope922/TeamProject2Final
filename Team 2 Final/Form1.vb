@@ -185,7 +185,7 @@ Public Class Form1
             '' still need to rebuild using the flickr.photo.search method with custom search options similar to ones specified here.
             '' this search request is for St. Louis, MO. this particular method does not need to be authorized. and most parameters are optional.
             Dim cityName As String = txtBoxCityName.Text
-            Dim requestedTest As String = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c4471b9774deb717aa6c61f6b88e259a&tags=" & cityName & "&per_page=3&page=1&format=rest"
+            Dim requestedTest As String = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=efdd3ce6e251f57b82269e4f3855755b&tags=" & cityName & "&per_page=3&page=1&format=rest"
             '' create the web request using the above url
             Dim flickrRequestPhoto As WebRequest = WebRequest.Create(requestedTest)
             '' store the response stream in the created variable
@@ -251,6 +251,10 @@ Public Class Form1
             Dim photoResponseStream3 As Stream = PhotoRequest3.GetResponse.GetResponseStream()
             Dim flickrPhotoFromStream3 As Image = Image.FromStream(photoResponseStream3)
             PictureBox3.Image = flickrPhotoFromStream3
+
+            '' get lat and long 
+            getLatandLongfromflickr()
+
             'error 404 page not found
             '' need a try catch block when i reach this point.
             ''todo get the rest of the elements from the initial response.
@@ -260,7 +264,31 @@ Public Class Form1
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+    Public Function getLatandLongfromflickr() As String
+        '' load the response and read the photo id then send a request to flickr for the lat and long and extract that info 
+        '' return it as lat and longitude as strings for bing maps 
+        Dim xmlgeoreader As New XmlDocument
+        Try
+            xmlgeoreader.Load("data.xml")
 
+            Dim latnode As XmlNode = xmlgeoreader.SelectSingleNode("//location/@latitude")
+
+            Dim longnode As XmlNode = xmlgeoreader.SelectSingleNode("//location/longitued")
+
+            Dim longitude_to_return = longnode.InnerText
+
+            Dim latitude_to_return = latnode.InnerText
+
+            Dim bingMapsLatLongFromFlickr As String = String.Format("{0},{1}", latitude_to_return, longitude_to_return)
+
+            MessageBox.Show("bingmapsInfo" + bingMapsLatLongFromFlickr)
+
+            Return bingMapsLatLongFromFlickr
+        Catch errorgettinggeo As Exception
+            MessageBox.Show("erorr getting geo location from photo request")
+        End Try
+
+    End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

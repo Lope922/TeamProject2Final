@@ -4,13 +4,17 @@ Imports System.Xml
 
 Public Class flickrPortion
 
+    ' this has not been implemented yet, but it could maybe even be a hashtable of queued resquests that need to me sent for information ???
+
     Private urlRequestList As ArrayList
+
 
     '' here is where are the flickr interation will be 
 
     '' for flikr i will need a web request for the city and state search built on these qualities. 
 
-    '' this returns the string built ready to be sent. NO ERROR CHECKING PRIOR. 
+    '' this returns the string built ready to be sent. NO ERROR CHECKINg implemented yet. 
+
     Public Function searchSettings() As String
         ' use this base url to generate a request. Replace api_ key with my api key 
         '       URL: https://api.flickr.com/services/rest/?method=flickr.photos.search
@@ -29,7 +33,7 @@ Public Class flickrPortion
             ' request photos that have geo locations
             Dim getPhotos_with_geoLoations = "&has_geo=1"
             '' combines both the search for photos per page and number of pages returned
-            Dim photosPerPage = "&per_page=6&page=1"
+            Dim photosPerPage = "&per_page=3&page=1"
             Dim responseFormat = "&format=rest"
 
             '' this string built represents all the components needed for the form. some defined. some derived from user input. 
@@ -85,11 +89,16 @@ Public Class flickrPortion
         '' todo create the loop that loops through the data and saves/ maps them. Think about using a hashtable or hashmap. It could be useful here plus i need the practice.
 
         Return xmlflickrReader
-        '' this is where i am stuck and may need to refer to a hashmap 
+
+        '' this is where i am stuck and may need to refer to a hashmap ???
     End Function
 
     '' get the info and return it either as an arraylist. Next create a method to read from the arraylist and make the requests for images. 
     Public Sub extractInfoFromStream(urlRequestList As ArrayList)
+
+        '' IN THIS SUB METHOD I WILL EXTRACT THE INFO FROM THE STREAM TO CREATE A WEB REQUEST FOR PHOTOS IN THE FORM OF A URL PHOTO REQUEST : 
+
+        ' FLICKR'S API URL REQUEST FORMAT.  
         Try
             '' read from the stream 
             Dim xmlResponseDocument As New XmlDocument

@@ -83,6 +83,8 @@ Public Class Form1
         ' the test url
         ' Try
         'the web request
+
+        ''TO DO SPLIT THIS INTO A two sub tasks and pass them into button click. An error was thrown when city search name was not a city name rather a photo search string. 
         Dim webRequestForecast As WebRequest = WebRequest.Create(url_request_built())
         '' comes back as a stream, prepare a variable to handle/process stream
         Dim forecastResponseStream As Stream = webRequestForecast.GetResponse.GetResponseStream()
@@ -167,10 +169,8 @@ Public Class Form1
 
 
     Private Sub btnGetFlickr_Click(sender As Object, e As EventArgs) Handles btnGetFlickr.Click
-        '' call city and state fuctions
-        ' callCityAndState()
-        '' base api method use
-        ' https://api.flickr.com/services/rest/?method=flickr.photos.search
+     
+        '' base api method uses this format  https://api.flickr.com/services/rest/?method=flickr.photos.search
         '' api key required to make request. This is a temp key expires every 24 hours
         '&api_key=348389c8e6dfd154eeccac983fb067b3
         '&tags=St.+Paul%2C+MN&safe_search=1
@@ -188,7 +188,7 @@ Public Class Form1
             '' still need to rebuild using the flickr.photo.search method with custom search options similar to ones specified here.
             '' this search request is for St. Louis, MO. this particular method does not need to be authorized. and most parameters are optional.
             Dim cityName As String = txtBoxCityName.Text
-            Dim requestedTest As String = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c4471b9774deb717aa6c61f6b88e259a&tags=" & cityName & "&per_page=3&page=2&format=rest"
+            Dim requestedTest As String = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=efdd3ce6e251f57b82269e4f3855755b&tags=" & cityName & "&per_page=3&page=1&format=rest"
             '' create the web request using the above url
             Dim flickrRequestPhoto As WebRequest = WebRequest.Create(requestedTest)
             '' store the response stream in the created variable
